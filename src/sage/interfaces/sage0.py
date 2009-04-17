@@ -141,14 +141,17 @@ class Sage(Expect):
         from sage.misc.misc import SAGE_ROOT
         if python:
             if server:
-                command = SAGE_ROOT + "/spd -python -u"
+                command = "spd -python -u"
             else:
                 command = SAGE_ROOT + "/spd -python -u"
             prompt = ">>>"
             if init_code is None:
                 init_code = ['from sage.all import *', 'import cPickle']
         else:
-            command = SAGE_ROOT + "/spd"
+            if server:
+                command = "spd"
+            else:
+                command = SAGE_ROOT + "/spd"
             prompt = "sage: "
             if init_code is None:
                 init_code = ['import cPickle', '%colors NoColor']
