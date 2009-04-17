@@ -4,5 +4,14 @@ if [ "$SAGE_LOCAL" = "" ]; then
    exit 1
 fi
 
+if [ "$SAGE_ROOT" = "" ]; then
+   echo "SAGE_ROOT undefined ... exiting";
+   echo "Maybe run 'sage -sh'?"
+   exit 1
+fi
+
 cd src
 python setup.py install
+TEMPLATES=$SAGE_ROOT/devel/sage/sage/server/notebook/templates
+mkdir -p $TEMPLATES
+cp sage/server/notebook/templates/* $TEMPLATES
