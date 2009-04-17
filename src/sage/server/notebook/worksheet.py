@@ -112,7 +112,7 @@ def initialized_sage(server, ulimit):
         Sage
     """
     # Create new pexpect interface to a Python instance
-    S = Sage(server=server, ulimit=ulimit, maxread = 1, python=True, verbose_start=False)
+    S = Sage(server=server, ulimit=ulimit, maxread = 1, python=True, verbose_start=False, init_code='')
 
     # Start up the subprocess but do not block when starting
     S._start(block_during_init=False)
@@ -122,7 +122,7 @@ def initialized_sage(server, ulimit):
 
     # Send some code to it (nonblocking)
     E.sendline('\n')
-    cmd = 'from sage.all_notebook import *;'
+    cmd = 'from sage.all_notebook import python, os, sage;'
     cmd += 'import sage.server.support as _support_; '
     E.sendline(cmd)
 
