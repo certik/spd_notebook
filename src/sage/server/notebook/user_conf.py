@@ -4,7 +4,7 @@
 import conf
 
 defaults = {'max_history_length':500,
-            'default_system':'sage',
+            'default_system':'python',
             'autosave_interval':3*60,   # (in seconds)
             'default_pretty_print': False
             }
