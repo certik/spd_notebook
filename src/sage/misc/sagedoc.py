@@ -119,7 +119,7 @@ def format(s):
         first_line = s
     directives = [ d.lower() for d in first_line.split(',') ]
 
-    import sage.all
+    #import sage.all
     import sage.server.support
     docs = set([])
     while True:
