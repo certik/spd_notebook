@@ -529,31 +529,31 @@ def preparser(on=True):
 
 
 import sagedoc
-import IPython.OInspect
-IPython.OInspect.getdoc = sagedoc.my_getdoc
-IPython.OInspect.getsource = sagedoc.my_getsource
+#import IPython.OInspect
+#IPython.OInspect.getdoc = sagedoc.my_getdoc
+#IPython.OInspect.getsource = sagedoc.my_getsource
 
 #We monkey-patch IPython to disable the showing of plots
 #when doing introspection on them. This fixes Trac #2163.
-old_pinfo = IPython.OInspect.Inspector.pinfo
-def sage_pinfo(self, *args, **kwds):
-    """
-    A wrapper around IPython.OInspect.Inspector.pinfo which turns
-    off show_default before it is called and then sets it back
-    to its previous value.
-
-    Since this requires an IPython shell to test and the doctests aren't,
-    run under IPython, we cannot add doctests for this function.
-    """
-    from sage.plot.all import show_default
-    old_value = show_default()
-    show_default(False)
-    
-    result = old_pinfo(self, *args, **kwds)
-    
-    show_default(old_value)
-    return result
-IPython.OInspect.Inspector.pinfo = sage_pinfo
+#old_pinfo = IPython.OInspect.Inspector.pinfo
+#def sage_pinfo(self, *args, **kwds):
+#    """
+#    A wrapper around IPython.OInspect.Inspector.pinfo which turns
+#    off show_default before it is called and then sets it back
+#    to its previous value.
+#
+#    Since this requires an IPython shell to test and the doctests aren't,
+#    run under IPython, we cannot add doctests for this function.
+#    """
+#    from sage.plot.all import show_default
+#    old_value = show_default()
+#    show_default(False)
+#    
+#    result = old_pinfo(self, *args, **kwds)
+#    
+#    show_default(old_value)
+#    return result
+#IPython.OInspect.Inspector.pinfo = sage_pinfo
 
 import __builtin__
 _prompt = 'sage'
